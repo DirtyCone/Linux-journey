@@ -78,3 +78,56 @@ ss -tlnp  Listening ports on this machine
 journalctl -f  Live system log (Ctrl+C to stop)
 journalctl -f | grep UFW  Live firewall blocks only
 
+## Git & GitHub
+git init  Turn folder into a repo
+git status  See what changed / staged
+git add <file>  Stage a file (git add . = all)
+git commit -m "msg"  Save a snapshot
+git push  Upload commits to GitHub
+git pull  Download commits from GitHub
+git log  Commit history (q to quit)
+git clone <url>  Download a repo
+git remote -v  Show linked GitHub URL
+git remote set-url origin <url>  Change linked URL
+gh auth login  Log machine into GitHub
+gh auth status  Check Github login
+gh repo create <name> --private --source=. --push
+loop: add, commit, push
+.env = secrets, never commit, keep in .gitignore
+
+## Shell Customization
+source ~/.bashrc  Reload config after editing
+alias name="command"  Make a shortcut
+function: mkcd() { mkdir -p "$1" && cd "$1"; }  Make + enter a folder in one command
+$1 = first argument passed to a function
+# at line start = comment (disabled line)
+
+## Packages
+Arch/Omarchy: sudo pacman -S <pkg>
+AUR (Omarchy extras): yay -S <pkg>  Use <pkg>-bin for precompiled (faster)
+Ubuntu/Debian: sudo apt install <pkg>
+Update Ubuntu: sudo apt update && sudo apt upgrade -y
+
+## SSH & Remote Servers
+ssh user@ip  Connect to a remote machine
+exit  Disconnect (back to local)
+First connect ask to trust host  Type yes
+hostname  Shows which machine you're on
+private IP (192.168.x.x) = Local network only
+rachable only on same network (no internet exposure)
+
+## Networking (checks)
+ip route | grep default  Show gateway + interface
+ping -c 3 <host>  Test internet (3 pings, then stop)
+resolvectl status  DNS info
+
+## Drives & Boot Media
+lsblk  List drives (RM=1 means removable)
+sudo unmount /dev/sdX1  Unmount before removing
+sudo ventoy -i /dev/sdX  make a Ventoy multi-ISO USB (Then just copy ISO files into it)
+
+## Static IP (Ubuntu Server / Netplan)
+config file: /etc/netplan/50-cloud-init.yaml
+edit with sudo; YAML = spaces only, no tabs
+sudo netplan try  Apply with 120s auto-revert safety
+sudo netplan apply  Apply permanently
